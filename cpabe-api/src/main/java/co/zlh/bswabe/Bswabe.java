@@ -1,4 +1,4 @@
-package co.junwei.bswabe;
+package co.zlh.bswabe;
 
 import it.unisa.dia.gas.jpbc.CurveParameters;
 import it.unisa.dia.gas.jpbc.Element;
@@ -97,8 +97,8 @@ public class Bswabe {
 		prv.comps = new ArrayList<BswabePrvComp>();
 		for (i = 0; i < len; i++) {
 			BswabePrvComp comp = new BswabePrvComp();
-			Element h_rp;
-			Element rp;
+			Element h_rp; //H(j)
+			Element rp; //rj
 
 			comp.attr = attrs[i];
 
@@ -283,7 +283,7 @@ public class Bswabe {
 			return beb;
 		}
 
-		pickSatisfyMinLeaves(cph.p, prv);
+		pickSatisfyMinLeaves(cph.p, prv);//
 
 		decFlatten(t, cph.p, prv, pub);
 
@@ -510,8 +510,8 @@ public class Bswabe {
 		String[] toks;
 		String tok;
 		ArrayList<BswabePolicy> stack = new ArrayList<BswabePolicy>();
-		BswabePolicy root;
-
+		BswabePolicy root ;
+		int level_num = 0;
 		toks = s.split(" ");
 
 		int toks_cnt = toks.length;
@@ -523,6 +523,7 @@ public class Bswabe {
 				stack.add(baseNode(1, tok));
 			} else {
 				BswabePolicy node;
+				level_num++;
 
 				/* parse kof n node */
 				String[] k_n = tok.split("of");
@@ -569,6 +570,7 @@ public class Bswabe {
 		}
 
 		root = stack.get(0);
+		root.level_num = level_num;
 		return root;
 	}
 
@@ -606,7 +608,7 @@ public class Bswabe {
 			k = policy.children[o1.intValue()].min_leaves;
 			l = policy.children[o2.intValue()].min_leaves;
 
-			return	k < l ? -1 : 
+			return	k < l ? -1 :
 					k == l ? 0 : 1;
 		}
 	}

@@ -1,4 +1,4 @@
-package co.junwei.cpabe;
+package co.zlh.cpabe;
 
 public class Demo {
 	final static boolean DEBUG = true;
@@ -13,8 +13,8 @@ public class Demo {
 	static String encfile = dir + "/input.pdf.cpabe";
 	static String decfile = dir + "/input.pdf.new";
 
-	static String[] attr = { "baf1", "fim1", "foo" };
-	static String policy = "foo bar fim 2of3 baf 1of2";
+	static String[] attr = { "baf", "fim", "foo" };
+	static String policy = "foo bar fim 2of3 baf 2of2";
 
 	static String[] attr_kevin = {
 			"business_staff",
@@ -400,11 +400,15 @@ public class Demo {
 			+ "2of2 executive_level_flexint_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1xxx "
 			+ "1of2 executive_level_ge_2^04 executive_level_ge_2^08 executive_level_ge_2^16 executive_level_ge_2^32 1of5 audit_group strategy_team 2of3 business_staff 2of2 1of2";
 
+//	static String student_attr = "objectClass:inetOrgPerson objectClass:organizationalPerson "
+//			+ "sn:student2 cn:student2 uid:student2 userPassword:student2 "
+//			+ "ou:idp o:computer mail:student2@sdu.edu.cn title:student";
+
 	static String student_attr = "objectClass:inetOrgPerson objectClass:organizationalPerson "
-			+ "sn:student2 cn:student2 uid:student2 userPassword:student2 "
+			+ "cn:student2 uid:student2 userPassword:student2 "
 			+ "ou:idp o:computer mail:student2@sdu.edu.cn title:student";
 
-	static String student_policy = "sn:student2 cn:student2 uid:student2 3of3";
+	static String student_policy = "sn:student2 cn:student2 uid:student2 2of3 title:student 2of2" ;
 
 	public static void main(String[] args) throws Exception {
 		String attr_str;
@@ -417,6 +421,7 @@ public class Demo {
 		policy = student_policy;
 
 		Cpabe test = new Cpabe();
+		long startTime=System.currentTimeMillis();   //获取开始时间
 		println("//start to setup");
 		test.setup(pubfile, mskfile);
 		println("//end to setup");
@@ -432,6 +437,8 @@ public class Demo {
 		println("//start to dec");
 		test.dec(pubfile, prvfile, encfile, decfile);
 		println("//end to dec");
+		long endTime=System.currentTimeMillis(); //获取结束时间
+		System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
 	}
 
 	/* connect element of array with blank */

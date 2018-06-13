@@ -1,4 +1,4 @@
-package co.junwei.bswabe;
+package co.zlh.bswabe;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class BswabePolicy {
 	Element cp;		/* G_1 only for leaves */
 	/* array of BswabePolicy and length is 0 for leaves */
 	BswabePolicy[] children;
-	
+	int level_num ;
 	/* only used during encryption */
 	BswabePolynomial q;
 

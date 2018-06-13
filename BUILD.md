@@ -16,12 +16,12 @@ mvn package && script/mv_jars.sh
 
 ### BSWABE
 ```
-java -cp "jars/*" co.junwei.bswabe.Demo
+java -cp "jars/*" co.zlh.bswabe.Demo
 ```
 
 ### CPABE
 ```
-java -cp "jars/*" co.junwei.cpabe.Demo
+java -cp "jars/*" co.zlh.cpabe.Demo
 ```
 
 ## Get CPABE into Your Project

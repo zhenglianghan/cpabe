@@ -1,6 +1,4 @@
-package co.junwei.bswabe;
-
-import co.junwei.bswabe.*;
+package co.zlh.bswabe;
 
 public class Demo {
 	final static boolean DEBUG = true;
@@ -379,54 +377,54 @@ public class Demo {
 		//attr = attr_sara;
 		//policy = policy_kevin_or_sara;
 
-		println("//demo for co.junwei.bswabe: start to setup");
+		println("//demo for co.zlh.bswabe: start to setup");
 		Bswabe.setup(pub, msk);
-		println("//demo for co.junwei.bswabe: end to setup");
+		println("//demo for co.zlh.bswabe: end to setup");
 
-		println("\n//demo for co.junwei.bswabe: start to keygen");
+		println("\n//demo for co.zlh.bswabe: start to keygen");
 		prv = Bswabe.keygen(pub, msk, attr);
-		println("//demo for co.junwei.bswabe: end to keygen");
+		println("//demo for co.zlh.bswabe: end to keygen");
 
-		println("\n//demo for co.junwei.bswabe: start to delegate_ok");
+		println("\n//demo for co.zlh.bswabe: start to delegate_ok");
 		prv_delegate_ok = Bswabe.delegate(pub, prv, attr_delegate_ok);
-		println("//demo for co.junwei.bswabe: end to delegate_ok");
+		println("//demo for co.zlh.bswabe: end to delegate_ok");
 
-		println("\n//demo for co.junwei.bswabe: start to delegate_ko");
+		println("\n//demo for co.zlh.bswabe: start to delegate_ko");
 		prv_delegate_ko = Bswabe.delegate(pub, prv, attr_delegate_ko);
-		println("//demo for co.junwei.bswabe: end to delegate_ko");
+		println("//demo for co.zlh.bswabe: end to delegate_ko");
 
-		println("\n//demo for co.junwei.bswabe: start to enc");
+		println("\n//demo for co.zlh.bswabe: start to enc");
 		BswabeCphKey crypted = Bswabe.enc(pub, policy);
 		cph = crypted.cph;
-		println("//demo for co.junwei.bswabe: end to enc");
+		println("//demo for co.zlh.bswabe: end to enc");
 
-		println("\n//demo for co.junwei.bswabe: start to dec");
+		println("\n//demo for co.zlh.bswabe: start to dec");
 		result = Bswabe.dec(pub, prv, cph);
-		println("//demo for co.junwei.bswabe: end to dec");
+		println("//demo for co.zlh.bswabe: end to dec");
 		if ((result.b == true) && (result.e.equals(crypted.key) == true))
 			System.out.println("succeed in decrypt");
 		else
 			System.err.println("failed to decrypting");
 
-		println("\n//demo for co.junwei.bswabe: start to dec with ok delegated key");
+		println("\n//demo for co.zlh.bswabe: start to dec with ok delegated key");
 		result = Bswabe.dec(pub, prv_delegate_ok, cph);
-		println("//demo for co.junwei.bswabe: end to dec with ok delegated key");
+		println("//demo for co.zlh.bswabe: end to dec with ok delegated key");
 		if ((result.b == true) && (result.e.equals(crypted.key) == true))
 		    System.out.println("succeed in decrypt with ok delegated key");
 		else
 		    System.err.println("failed to decrypting with ok delegated key");
 
-		println("\n//demo for co.junwei.bswabe: start to dec");
+		println("\n//demo for co.zlh.bswabe: start to dec");
 		result = Bswabe.dec(pub, prv, cph);
-		println("//demo for co.junwei.bswabe: end to dec");
+		println("//demo for co.zlh.bswabe: end to dec");
 		if ((result.b == true) && (result.e.equals(crypted.key) == true))
 			System.out.println("succeed in decrypt");
 		else
 			System.err.println("failed to decrypting");
 
-		println("\n//demo for co.junwei.bswabe: start to dec with ko delegated key");
+		println("\n//demo for co.zlh.bswabe: start to dec with ko delegated key");
 		result = Bswabe.dec(pub, prv_delegate_ko, cph);
-		println("//demo for co.junwei.bswabe: end to dec with ko delegated key");
+		println("//demo for co.zlh.bswabe: end to dec with ko delegated key");
 		if ((result.b == true) && (result.e.equals(crypted.key) == true))
 		    System.err.println("succeed in decrypt with ko delegated key (should not happen)");
 		else
