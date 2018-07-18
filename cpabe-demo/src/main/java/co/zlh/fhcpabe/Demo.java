@@ -4,10 +4,10 @@ import it.unisa.dia.gas.jpbc.Element;
 import java.util.ArrayList;
 
 public class Demo {
-    static String[] attr = {"a","b","c","d","e","f"};
-    //static String[] attr = {"f","g"};
-    static String policy= "a b 2of2 d 2of2 e 2of2 f g 2of3" ;
-    //static String policy= "a b 2of2" ;
+    //static String[] attr = {"a","b","c","d","e","f"};
+    static String[] attr = {"0","2"};
+    //static String policy= "a b 2of2 d 2of2 e 2of2 f g 2of3" ;
+    static String policy= "2 3 1of2 0 1 3of3" ;
     public static void main(String[] args) throws Exception {
         FhcpabePub pub = new FhcpabePub();
         FhcpabeMsk msk = new FhcpabeMsk();
